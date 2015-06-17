@@ -8,7 +8,7 @@ class FunSpecExample extends FunSpec with MustMatcherHeadlessBrowserExamples {
   describe("Home page title") {
     describe("when available") {
       it("should be Google") {
-        pageTitle must equal (expectedPageTitle())
+        pageTitle must equal(expectedPageTitle())
       }
     }
   }

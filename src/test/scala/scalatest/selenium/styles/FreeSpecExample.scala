@@ -3,6 +3,7 @@ package scalatest.selenium.styles
 import org.scalatest.FreeSpec
 import scalatest.selenium.setup.NoMatchersHeadlessBrowserExamples
 import org.scalatest.selenium.HtmlUnit
+
 class FreeSpecExample extends FreeSpec with NoMatchersHeadlessBrowserExamples {
 
   "Home page" - {

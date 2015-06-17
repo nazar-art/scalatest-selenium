@@ -8,7 +8,7 @@ import org.scalatest.selenium.Chrome
 import org.scalatest.time.{Millis, Seconds, Span}
 
 class AmazonCoUkScenario extends FeatureSpec with GivenWhenThen with Matchers with Eventually with BeforeAndAfterAll
-  with Chrome {
+with Chrome {
 
   var homePage: AmazonCoUkHomePage = _
   var signInPage: AmazonCoUkSignInPage = _
@@ -40,20 +40,20 @@ class AmazonCoUkScenario extends FeatureSpec with GivenWhenThen with Matchers wi
 
     scenario("Sign In first") {
       Given("I navigate to amazon.co.uk web page")
-        go to homePage
-        homePage.isAvailable(homePage.title, webDriver)
+      go to homePage
+      homePage.isAvailable(homePage.title, webDriver)
 
       When("I am not signed in")
-        click on id("nav-your-account")
+      click on id("nav-your-account")
 
       Then("Navigate ot Sign In page")
-        signInPage.isAvailable(signInPage.title, webDriver)
+      signInPage.isAvailable(signInPage.title, webDriver)
 
       And("I provide credentials")
-        emailField("email").value = "andrii.kohan@gmail.com"
-        webDriver.findElement(By.name("password")).sendKeys("")
-        //passwordField("password").value = ""
-        submit
+      emailField("email").value = "andrii.kohan@gmail.com"
+      webDriver.findElement(By.name("password")).sendKeys("")
+      //passwordField("password").value = ""
+      submit
 
       And("find myself at my amazon home page")
       eventually {
@@ -63,96 +63,96 @@ class AmazonCoUkScenario extends FeatureSpec with GivenWhenThen with Matchers wi
 
     scenario("Search for a particular book") {
       Given("I am at my amazon account page")
-        pageTitle should be(homePage.accountPageTitle)
+      pageTitle should be(homePage.accountPageTitle)
 
       When("I select 'Search Books'")
-        click on id("searchDropdownBox")
-        implicitlyWait(Span(2, Seconds))
-        //        singleSel("searchDropdownBox").value = "Books"
-        def select = new Select(webDriver.findElement(By.id("searchDropdownBox")))
-        select.selectByVisibleText("Books")
+      click on id("searchDropdownBox")
+      implicitlyWait(Span(2, Seconds))
+      //        singleSel("searchDropdownBox").value = "Books"
+      def select = new Select(webDriver.findElement(By.id("searchDropdownBox")))
+      select.selectByVisibleText("Books")
 
       And("input 'model based testing tools'")
-        textField("twotabsearchtextbox").value = "model based testing tools"
-        submit
+      textField("twotabsearchtextbox").value = "model based testing tools"
+      submit
       Then("I've been navigated to search result page")
-       pageTitle should be(searchResultPage.title)
+      pageTitle should be(searchResultPage.title)
     }
 
     scenario("Select first result link in search result page") {
       Given("I am at search result page")
-        pageTitle should be(searchResultPage.title)
+      pageTitle should be(searchResultPage.title)
       When("I click top result link with correct name book")
-        click on linkText("Practical Model-Based Testing: A Tools Approach")
+      click on linkText("Practical Model-Based Testing: A Tools Approach")
       Then("I am navigated to item page")
-        eventually {
-          pageTitle should be(itemPage.title)
-        }
+      eventually {
+        pageTitle should be(itemPage.title)
+      }
     }
 
     scenario("Add found item to a specified Wish List") {
 
       Given("I am at item page")
-        pageTitle should be(itemPage.title)
+      pageTitle should be(itemPage.title)
       When("I add the item to the specified wish list")
 
-        //def element: Select = webDriver.findElement(By.id("reglist|a|asin")).asInstanceOf[Select]
-        //element.selectByVisibleText("Testing")
-        val wishListCombo: WebElement = (new WebDriverWait(webDriver, 1)).until(
-          ExpectedConditions.elementToBeClickable(webDriver.findElement(By.name("reglist|a|asin"))))
-        wishListCombo.click
+      //def element: Select = webDriver.findElement(By.id("reglist|a|asin")).asInstanceOf[Select]
+      //element.selectByVisibleText("Testing")
+      val wishListCombo: WebElement = (new WebDriverWait(webDriver, 1)).until(
+        ExpectedConditions.elementToBeClickable(webDriver.findElement(By.name("reglist|a|asin"))))
+      wishListCombo.click
 
-        val testingWishlistItem: WebElement = webDriver.findElement(By.xpath("//*[@id=\"wl-list-name-2\"]"))
+      val testingWishlistItem: WebElement = webDriver.findElement(By.xpath("//*[@id=\"wl-list-name-2\"]"))
 
-        (new WebDriverWait(webDriver, 10)).until(ExpectedConditions.elementToBeClickable(testingWishlistItem))
+      (new WebDriverWait(webDriver, 10)).until(ExpectedConditions.elementToBeClickable(testingWishlistItem))
 
       Then("I select specified wish list")
-        testingWishlistItem.click()
+      testingWishlistItem.click()
     }
 
     scenario("View specified wishlist") {
 
       Given("I am at newly added wishlist item view")
-        val ele: WebElement = webDriver.findElementByClassName("w-success-msg")
-        assertResult(true) {
-          ele.getText.contains("added to")
-        }
+      val ele: WebElement = webDriver.findElementByClassName("w-success-msg")
+      assertResult(true) {
+        ele.getText.contains("added to")
+      }
       When("Click view wishlist button")
-        eventually(timeout(Span(3, Seconds)), interval(Span(5, Millis))) {
-          click on "WLHUC_viewlist"
-        }
+      eventually(timeout(Span(3, Seconds)), interval(Span(5, Millis))) {
+        click on "WLHUC_viewlist"
+      }
       Then("I can see newly added item at specified wishlist page")
-        eventually {
-          pageTitle should be(testingWishlistPage.title)
-        }
+      eventually {
+        pageTitle should be(testingWishlistPage.title)
+      }
 
     }
 
     scenario("Remove specific book from wishlist") {
       Given("Number of total wishlist items increases")
-        eventually(timeout(Span(3, Seconds)), interval(Span(5, Millis))) {
-            numberOfLeftItemsInWishlistElement = webDriver.findElementByXPath(
-              "/html/body/div/div/div[2]/div/div/div/div[2]/div/div[6]/span/span")
-            numberOfLeftItemsInWishlistElement.getText should equal(String.valueOf(itemsInTestingWishListInitially + 1))
-        }
+      eventually(timeout(Span(3, Seconds)), interval(Span(5, Millis))) {
+        numberOfLeftItemsInWishlistElement = webDriver.findElementByXPath(
+          "/html/body/div/div/div[2]/div/div/div/div[2]/div/div[6]/span/span")
+        numberOfLeftItemsInWishlistElement.getText should equal(String.valueOf(itemsInTestingWishListInitially + 1))
+      }
 
       When("Click Remove button")
-        eventually(timeout(Span(2, Seconds)), interval(Span(5, Millis))) {
-          click on xpath("/html/body/div/div/div[2]/div/div[2]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[3]/div/div[2]/div/div/div[2]/span/span/a")
-          pageTitle should be(testingWishlistPage.title)
-        }
+      eventually(timeout(Span(2, Seconds)), interval(Span(5, Millis))) {
+        click on xpath("/html/body/div/div/div[2]/div/div[2]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[3]/div/div[2]/div/div/div[2]/span/span/a")
+        pageTitle should be(testingWishlistPage.title)
+      }
 
       Then("Number of items in wishlist decreases by one")
-        eventually(timeout(Span(2, Seconds)), interval(Span(5, Millis))) {
-          numberOfLeftItemsInWishlistElement.getText should equal(String.valueOf(itemsInTestingWishListInitially))
-        }
+      eventually(timeout(Span(2, Seconds)), interval(Span(5, Millis))) {
+        numberOfLeftItemsInWishlistElement.getText should equal(String.valueOf(itemsInTestingWishListInitially))
+      }
 
       And("I sign out")
-        testingWishlistPage.focusOn("nav-your-account", webDriver)
-        testingWishlistPage.elementIsClicked("nav-item-signout", webDriver)
+      testingWishlistPage.focusOn("nav-your-account", webDriver)
+      testingWishlistPage.elementIsClicked("nav-item-signout", webDriver)
 
       And("Navigate to Sign In page")
-        signInPage.isAvailable(signInPage.title, webDriver)
+      signInPage.isAvailable(signInPage.title, webDriver)
     }
 
   }

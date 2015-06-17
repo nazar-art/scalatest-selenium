@@ -9,7 +9,7 @@ class WordSpecExample extends WordSpec with NoMatchersHeadlessBrowserExamples {
   "Home page" when {
     "available" should {
       "have title Google" in {
-        assume (!HtmlUnit.isScreenshotSupported)
+        assume(!HtmlUnit.isScreenshotSupported)
         assertResult("Google") {
           HtmlUnit.pageTitle
         }
