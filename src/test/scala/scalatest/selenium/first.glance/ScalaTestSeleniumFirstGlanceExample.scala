@@ -11,7 +11,7 @@ with Matchers with BeforeAndAfterAll with Chrome {
   behavior of "Scalatest and selenium at first glance"
 
   it should "show page title" in {
-    go to (homepage)
+    go to homepage
     pageTitle should be("Am I at Google page?")
   }
 

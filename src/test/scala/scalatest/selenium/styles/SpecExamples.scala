@@ -9,7 +9,7 @@ class SpecExamples extends Spec with NoMatchersHeadlessBrowserExamples {
   object `Home page` {
 
     object `when avaialble` {
-      def `should have title Google` {
+      def `should have title Google`() {
         assert(HtmlUnit.pageTitle == expectedPageTitle())
       }
     }

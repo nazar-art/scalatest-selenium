@@ -5,7 +5,7 @@ import org.scalatest.selenium.Chrome
 
 class CoolExample extends FlatSpec with Chrome with MustMatchers with BeforeAndAfterAll {
   behavior of "Page"
-  go to ("https://www.google.com/ncr")
+  go to "https://www.google.com/ncr"
   it should "have title Google" in {
     pageTitle must be("Google")
   }

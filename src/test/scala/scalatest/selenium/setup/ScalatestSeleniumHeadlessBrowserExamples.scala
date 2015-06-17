@@ -11,7 +11,7 @@ trait ScalatestSeleniumHeadlessBrowserExamples extends Suite with HtmlUnit with 
   def expectedPageTitle(): String = "Google"
 
   override def beforeEach() {
-    go to (webPageUrl())
+    go to webPageUrl()
   }
 
 }

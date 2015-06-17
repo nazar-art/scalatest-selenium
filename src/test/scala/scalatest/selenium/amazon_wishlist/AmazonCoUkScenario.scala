@@ -22,7 +22,7 @@ with Chrome {
   implicit override val patienceConfig =
     PatienceConfig(timeout = scaled(Span(2, Seconds)), interval = scaled(Span(5, Millis)))
 
-  override protected def beforeAll {
+  override protected def beforeAll() {
     System.setProperty("webdriver.chrome.driver", "c:\\dev\\chrome\\chromedriver.exe")
     homePage = new AmazonCoUkHomePage
     signInPage = new AmazonCoUkSignInPage
@@ -51,7 +51,7 @@ with Chrome {
 
       And("I provide credentials")
       emailField("email").value = "andrii.kohan@gmail.com"
-      webDriver.findElement(By.name("password")).sendKeys("")
+      webDriver.findElement(By.name("password")).sendKeys("") // todo add password here
       //passwordField("password").value = ""
       submit
 
@@ -98,13 +98,13 @@ with Chrome {
 
       //def element: Select = webDriver.findElement(By.id("reglist|a|asin")).asInstanceOf[Select]
       //element.selectByVisibleText("Testing")
-      val wishListCombo: WebElement = (new WebDriverWait(webDriver, 1)).until(
+      val wishListCombo: WebElement = new WebDriverWait(webDriver, 1).until(
         ExpectedConditions.elementToBeClickable(webDriver.findElement(By.name("reglist|a|asin"))))
-      wishListCombo.click
+      wishListCombo.click()
 
       val testingWishlistItem: WebElement = webDriver.findElement(By.xpath("//*[@id=\"wl-list-name-2\"]"))
 
-      (new WebDriverWait(webDriver, 10)).until(ExpectedConditions.elementToBeClickable(testingWishlistItem))
+      new WebDriverWait(webDriver, 10).until(ExpectedConditions.elementToBeClickable(testingWishlistItem))
 
       Then("I select specified wish list")
       testingWishlistItem.click()
@@ -157,7 +157,7 @@ with Chrome {
 
   }
 
-  override protected def afterAll {
+  override protected def afterAll() {
     close
     quit
   }

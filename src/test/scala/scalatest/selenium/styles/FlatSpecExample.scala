@@ -7,7 +7,7 @@ class FlatSpecExample extends FlatSpec with ShouldMatcherHeadlessBrowserExamples
   behavior of "Home page"
   it should "have title Google" in {
     pageTitle should be(expectedPageTitle())
-    cancel
+    cancel()
   }
 
 }
