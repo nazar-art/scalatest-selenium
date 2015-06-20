@@ -22,7 +22,7 @@ with Chrome {
   implicit override val patienceConfig =
     PatienceConfig(timeout = scaled(Span(2, Seconds)), interval = scaled(Span(5, Millis)))
 
-  override protected def beforeAll() {
+  override protected def beforeAll() { // todo omit hardcoded driver exe following
     System.setProperty("webdriver.chrome.driver", "c:\\dev\\chrome\\chromedriver.exe")
     homePage = new AmazonCoUkHomePage
     signInPage = new AmazonCoUkSignInPage
