@@ -2,7 +2,7 @@ name := "scalatest-selenium"
 
 version := "1.0"
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.11.6"
 
 libraryDependencies ++= Seq(
   "net.sourceforge.htmlunit" % "htmlunit" % "2.14",

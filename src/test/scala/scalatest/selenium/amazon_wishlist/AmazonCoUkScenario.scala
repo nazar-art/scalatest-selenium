@@ -23,7 +23,8 @@ with Chrome {
     PatienceConfig(timeout = scaled(Span(2, Seconds)), interval = scaled(Span(5, Millis)))
 
   override protected def beforeAll() { // todo omit hardcoded driver exe following
-    System.setProperty("webdriver.chrome.driver", "c:\\dev\\chrome\\chromedriver.exe")
+//    System.setProperty("webdriver.chrome.driver", "c:\\dev\\chrome\\chromedriver.exe")
+    System.setProperty("webdriver.chrome.driver", "/home/nazar/Projects/IdeaProjects/SCALA/scalatest-selenium/lib/chromedriver.exe")
     homePage = new AmazonCoUkHomePage
     signInPage = new AmazonCoUkSignInPage
     searchResultPage = new AmazonCoUkSearchResultPage
