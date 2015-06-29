@@ -1,6 +1,7 @@
 package udemy.intro
 
-object ArrayVsObject {
+object ArrayVsList {
+//  final int[] arr = new int[]{0,1,2,3}
   val arr: Array[Int] = Array(0, 1, 2, 3)
   var elem: Int = arr(2)
   println(elem)

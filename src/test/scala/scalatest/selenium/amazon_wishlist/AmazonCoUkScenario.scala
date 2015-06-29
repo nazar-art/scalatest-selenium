@@ -16,6 +16,7 @@ with Chrome {
   var itemPage: AmazonCoUkItemPage = _
   var testingWishlistPage: AmazonCoUkTestingWishlistPage = _
   var wishlistItemPage: AmazonCoUkWishlistItemPage = _
+
   var itemsInTestingWishListInitially = 50
   var numberOfLeftItemsInWishlistElement: WebElement = _
 
@@ -37,7 +38,7 @@ with Chrome {
 
     info("As a user")
     info("I want to be able to add a found book at amazon.co.uk to a specific wishlist")
-    info("So that I can have books in a spcified wishlist")
+    info("So that I can have books in a specified wish list")
 
     scenario("Sign In first") {
       Given("I navigate to amazon.co.uk web page")
