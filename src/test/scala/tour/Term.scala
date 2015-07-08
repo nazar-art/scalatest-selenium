@@ -6,7 +6,7 @@ case class Var(name: String) extends Term
 
 case class Fun(arg: String, body: Term) extends Term
 
-case class App(f: Term, v: Term) extends Term
+case class Appl(f: Term, v: Term) extends Term
 
 object TermTest {
   def print(term: Term): Unit = term match {
@@ -15,7 +15,7 @@ object TermTest {
     case Fun(x: String, b: Term) =>
       Console.print("^" + x + ".")
       print(b)
-    case App(f: Term, v: Term) =>
+    case Appl(f: Term, v: Term) =>
       Console.print("(")
       print(f)
       Console.print(" ")
@@ -29,7 +29,7 @@ object TermTest {
   }
 
   def main(args: Array[String]) {
-    val t = Fun("x", Fun("y", App(Var("x"), Var("y"))))
+    val t = Fun("x", Fun("y", Appl(Var("x"), Var("y"))))
     val id = Fun("x", Var("x"))
 
     print(t)
