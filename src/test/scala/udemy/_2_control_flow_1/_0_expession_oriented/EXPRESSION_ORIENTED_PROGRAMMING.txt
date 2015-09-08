@@ -1,0 +1,11 @@
+
+0. Scala is expression oriented language
+
+1. Statement vs Expression
+--------------------------
+
+"An EXPRESSION has a value; a STATEMENT carries out an action".
+                                        Horstmann, "Scala for Impatient."
+
+An EXPRESSION can be right part of an assignment;
+a STATEMENT can be string finished with semicolon.
