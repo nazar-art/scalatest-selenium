@@ -1,0 +1,14 @@
+
+1. Binary relation (correspondence, dyadic relation, 2-rd place)
+
+2.1 Binary relation on set A = sub-set of cartesian product (A, A)
+    sub-set of cartesian product (A, A) = predicate (A, A) => Boolean
+
+3. Example:
+    A = {1, 2, 3, 4}
+
+    Enumerable form
+        R(<)
+
+
+    Predicative form

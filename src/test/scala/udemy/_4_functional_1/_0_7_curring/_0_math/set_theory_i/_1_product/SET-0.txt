@@ -1,0 +1,12 @@
+
+1. Ordered pair 2-tuple: a, b ~> (a, b)
+        1.1 Postulate
+        1.2 Define in sets
+            (a, b) = {a, {a, b}}
+            (a, b) = {{a}, {a, b}}
+
+2. Properties
+        (a, b) != (b, a)
+        (a, a) != (a)
+
+3. Cartesian product (Dekart's variant): A, B ~> (A, B), set of all ordered pairs
