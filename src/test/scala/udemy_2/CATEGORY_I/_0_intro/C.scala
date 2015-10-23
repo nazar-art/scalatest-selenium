@@ -3,6 +3,11 @@ package udemy_2.CATEGORY_I._0_intro
 // C[T] + (f: ?A=>B?) = (C[A] => C[B])
 abstract class C[A] {
 
+  /* covariant functor example
+  trait C[A] {
+    def fun[B](f: A => B): C[B]
+  }*/
+
   // covariant functor
   def map[B](f: A => B): C[A] => C[B]
 
